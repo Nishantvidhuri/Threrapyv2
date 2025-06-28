@@ -1,36 +1,169 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dr. Serena Blake - Therapy Website
 
-## Getting Started
+A professional, responsive therapy website built with Next.js 14 and Tailwind CSS for Dr. Serena Blake, a licensed clinical psychologist.
 
-First, run the development server:
+## 🌟 Features
 
+### Hero Section
+- Full-screen background with gradient and subtle pattern
+- Professional headshot placeholder with initials
+- Compelling headline and sub-headline
+- Prominent call-to-action buttons
+- Smooth navigation to other sections
+
+### About Section
+- Professional bio and approach description
+- Education and certifications
+- Specializations and experience
+- Statistics showcasing expertise (10+ years, 500+ clients)
+
+### Services Section
+- Individual Therapy ($200/session)
+- Couples Therapy ($250/session)
+- Free Consultation (20-minute phone call)
+- Detailed service descriptions
+- Office hours for both in-person and virtual sessions
+
+### FAQ Section
+- Interactive accordion-style questions and answers
+- Common therapy-related questions
+- Smooth animations and transitions
+- Mobile-responsive design
+
+### Contact Section
+- Contact form with validation
+- Contact information (phone, email, address)
+- Emergency resources
+- Professional contact details
+
+## 🛠️ Technologies Used
+
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS** - Utility-first CSS framework
+- **React Hooks** - State management for interactive components
+- **Responsive Design** - Mobile-first approach
+- **Accessibility** - WCAG compliant design
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/dr-serena-blake-therapy.git
+cd dr-serena-blake-therapy
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## 📱 Responsive Design
 
-To learn more about Next.js, take a look at the following resources:
+The website is fully responsive and optimized for:
+- Desktop (1200px+)
+- Tablet (768px - 1199px)
+- Mobile (320px - 767px)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 Design Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Color Scheme**: Professional indigo and purple palette
+- **Typography**: Inter font for clean, readable text
+- **Animations**: Subtle hover effects and transitions
+- **Accessibility**: High contrast ratios and keyboard navigation
+- **Performance**: Optimized images and fast loading times
 
-## Deploy on Vercel
+## 📋 Content Sections
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Dr. Blake's Information
+- **Name**: Dr. Serena Blake
+- **Title**: Licensed Clinical Psychologist
+- **Education**: Ph.D. in Clinical Psychology, Stanford University
+- **Experience**: 10+ years, 500+ clients helped
+- **Location**: San Francisco, CA
+- **Contact**: (555) 123-4567, dr.blake@therapy.com
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Services Offered
+- Individual Therapy ($200/session)
+- Couples Therapy ($250/session)
+- Free Consultation
+- Virtual and in-person sessions
+- Specializations: Anxiety, Depression, Trauma, Relationships
+
+### Office Hours
+- **In-Person**: Mon-Fri 9AM-6PM, Sat 10AM-2PM
+- **Virtual**: Mon-Fri 8AM-7PM, Sat 9AM-3PM
+
+## 🚀 Deployment
+
+### Vercel Deployment
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Deploy automatically on every push
+
+### Live Demo
+Visit the live website: [https://dr-serena-blake-therapy.vercel.app](https://dr-serena-blake-therapy.vercel.app)
+
+## 📝 Customization
+
+### Updating Content
+- Edit `src/app/page.tsx` to modify text content
+- Update contact information in the Contact section
+- Modify services and pricing as needed
+
+### Styling
+- Customize colors in `src/app/globals.css`
+- Modify Tailwind classes for different styling
+- Update the color scheme variables
+
+### Adding Features
+- Add new sections by creating new components
+- Integrate with booking systems
+- Add blog or resources section
+- Implement contact form backend
+
+## 🔧 Development
+
+### Available Scripts
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+### Project Structure
+```
+src/
+├── app/
+│   ├── globals.css      # Global styles
+│   ├── layout.tsx       # Root layout
+│   └── page.tsx         # Main page component
+├── components/          # Reusable components (if added)
+└── lib/                 # Utility functions (if added)
+```
+
+## 📞 Contact
+
+For questions about this website or to request modifications:
+- Email: [your-email@example.com]
+- GitHub: [your-github-username]
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+**Note**: This is a demo website for Dr. Serena Blake. All contact information and details are fictional and for demonstration purposes only.
