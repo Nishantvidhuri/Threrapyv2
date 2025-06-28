@@ -1,12 +1,17 @@
 {
-  "name": "therapist",
-  "version": "0.1.0",
+  "name": "dr-serena-blake-therapy",
+  "version": "1.0.0",
   "private": true,
+  "description": "Professional therapy website for Dr. Serena Blake - Licensed Clinical Psychologist",
+  "keywords": ["therapy", "psychologist", "counseling", "nextjs", "tailwindcss"],
+  "author": "Dr. Serena Blake",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next build && next export"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -23,5 +28,9 @@
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
     "@eslint/eslintrc": "^3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   }
 }
