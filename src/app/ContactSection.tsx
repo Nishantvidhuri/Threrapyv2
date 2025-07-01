@@ -1,47 +1,54 @@
-import { useState, ChangeEvent, FormEvent } from "react";
+"use client";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { useState } from "react";
+import emailjs from 'emailjs-com';
 
-type FormErrors = {
-  name?: string;
-  email?: string;
-  message?: string;
-};
+const schema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().optional(),
+  message: z.string().min(1, "Message is required"),
+});
+
+type FormData = z.infer<typeof schema>;
 
 export default function ContactSection() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
   });
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [submitted, setSubmitted] = useState(false);
 
-  function validate() {
-    const newErrors: FormErrors = {};
-    if (!form.name.trim()) newErrors.name = "Name is required.";
-    if (!form.email.trim()) {
-      newErrors.email = "Email is required.";
-    } else if (!/^[^@]+@[^@]+\.[^@]+$/.test(form.email)) {
-      newErrors.email = "Please enter a valid email address.";
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    setIsSubmitting(true);
+    setSubmitMessage("");
+    try {
+      await emailjs.send(
+        'service_v5ma1dr',
+        'template_n8csemo',
+        {
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          message: data.message,
+        },
+        'zcL4jj0QhEChPRS1V'
+      );
+      setSubmitMessage("Thank you for your message! I will get back to you soon.");
+      reset();
+    } catch {
+      setSubmitMessage("Sorry, there was an error sending your message. Please try again later.");
     }
-    if (!form.message.trim()) newErrors.message = "Message is required.";
-    return newErrors;
-  }
-
-  function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    setForm({ ...form, [e.target.id]: e.target.value });
-    setErrors({ ...errors, [e.target.id]: undefined });
-  }
-
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const validationErrors = validate();
-    setErrors(validationErrors);
-    if (Object.keys(validationErrors).length === 0) {
-      setSubmitted(true);
-      setForm({ name: "", email: "", phone: "", message: "" });
-    }
-  }
+    setIsSubmitting(false);
+  };
 
   return (
     <section id="locate" className="relative w-full h-auto flex flex-wrap flex-col-reverse md:flex-row bg-[#B5DBDF] p-4 md:px-[10%]">
@@ -90,43 +97,41 @@ export default function ContactSection() {
           <p className="text-sm text-center mb-6" style={{ color: '#144133' }}>
             Simply fill out the brief fields below and Dr. Serena Blake will be in touch with you soon, usually within one business day. This form is safe, private, and completely free.
           </p>
-          <form className="space-y-4" onSubmit={handleSubmit} noValidate>
+          <form className="space-y-4" onSubmit={handleSubmit(onSubmit)} noValidate>
             <div>
               <label htmlFor="name" className="text-sm font-medium" style={{ color: '#144133' }}>Name</label>
               <input
                 id="name"
+                type="text"
+                {...register("name")}
                 className={`flex h-9 w-full rounded-md border bg-transparent px-3 py-1 text-sm shadow-sm mt-1 placeholder:text-[#144133]/30 ${errors.name ? "border-red-500" : ""}`}
                 placeholder="Name"
-                value={form.name}
-                onChange={handleChange}
                 style={{ borderColor: '#144133' }}
                 required
               />
-              {errors.name && <p className="text-red-600 text-xs mt-1">{errors.name}</p>}
+              {errors.name && <p className="text-red-600 text-xs mt-1">{errors.name.message}</p>}
             </div>
             <div>
               <label htmlFor="email" className="text-sm font-medium" style={{ color: '#144133' }}>Email</label>
               <input
                 id="email"
                 type="email"
+                {...register("email")}
                 className={`flex h-9 w-full rounded-md border bg-transparent px-3 py-1 text-sm shadow-sm mt-1 placeholder:text-[#144133]/30 ${errors.email ? "border-red-500" : ""}`}
                 placeholder="you@example.com"
-                value={form.email}
-                onChange={handleChange}
                 style={{ borderColor: '#144133' }}
                 required
               />
-              {errors.email && <p className="text-red-600 text-xs mt-1">{errors.email}</p>}
+              {errors.email && <p className="text-red-600 text-xs mt-1">{errors.email.message}</p>}
             </div>
             <div>
               <label htmlFor="phone" className="text-sm font-medium" style={{ color: '#144133' }}>Phone</label>
               <input
                 id="phone"
                 type="tel"
+                {...register("phone")}
                 className="flex h-9 w-full rounded-md border bg-transparent px-3 py-1 text-sm shadow-sm mt-1 placeholder:text-[#144133]/30"
                 placeholder="(555) 234-5678"
-                value={form.phone}
-                onChange={handleChange}
                 style={{ borderColor: '#144133' }}
               />
             </div>
@@ -134,24 +139,24 @@ export default function ContactSection() {
               <label htmlFor="message" className="text-sm font-medium" style={{ color: '#144133' }}>Message</label>
               <textarea
                 id="message"
+                {...register("message")}
                 className={`flex min-h-[60px] w-full rounded-md border bg-transparent px-3 py-2 text-sm shadow-sm mt-1 placeholder:text-[#144133]/30 ${errors.message ? "border-red-500" : ""}`}
                 placeholder="How can I help you?"
-                value={form.message}
-                onChange={handleChange}
                 style={{ borderColor: '#144133' }}
                 required
               />
-              {errors.message && <p className="text-red-600 text-xs mt-1">{errors.message}</p>}
+              {errors.message && <p className="text-red-600 text-xs mt-1">{errors.message.message}</p>}
             </div>
             <button
               className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#144133] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 w-full transition duration-300 bg-[#144133] text-[#B5DBDF] ease-in-out hover:outline hover:outline-[#144133] hover:bg-[#e6f6f3] hover:text-[#144133]"
               type="submit"
+              disabled={isSubmitting}
             >
-              Submit
+              {isSubmitting ? "Sending..." : "Submit"}
             </button>
-            {submitted && (
+            {submitMessage && (
               <p className="text-green-700 text-center text-sm mt-2">
-                Thank you! Your message has been sent.
+                {submitMessage}
               </p>
             )}
             <p className="text-sm mt-2" style={{ color: '#144133' }}>
