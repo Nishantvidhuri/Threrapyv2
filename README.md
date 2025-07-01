@@ -1,40 +1,42 @@
 # Dr. Serena Blake - Therapy Website
 
-A professional, responsive therapy website built with Next.js 14 and Tailwind CSS for Dr. Serena Blake, a licensed clinical psychologist.
+A professional, responsive therapy website built with Next.js 14 and Tailwind CSS for Dr. Serena Blake, PsyD, a licensed clinical psychologist based in Los Angeles, CA.
 
 ## 🌟 Features
 
 ### Hero Section
 - Full-screen background with gradient and subtle pattern
-- Professional headshot placeholder with initials
+- Professional headshot or logo
 - Compelling headline and sub-headline
 - Prominent call-to-action buttons
 - Smooth navigation to other sections
 
 ### About Section
 - Professional bio and approach description
-- Education and certifications
-- Specializations and experience
-- Statistics showcasing expertise (10+ years, 500+ clients)
+- Credentials and specializations
+- Experience and statistics
+- Animated counters for years of experience and client sessions
 
 ### Services Section
-- Individual Therapy ($200/session)
-- Couples Therapy ($250/session)
-- Free Consultation (20-minute phone call)
+- Christian Individual Counseling
+- Christian Couples Counseling
 - Detailed service descriptions
 - Office hours for both in-person and virtual sessions
 
 ### FAQ Section
-- Interactive accordion-style questions and answers
+- Accessible, mobile-friendly FAQ list
 - Common therapy-related questions
-- Smooth animations and transitions
-- Mobile-responsive design
+- Clean, readable design
 
 ### Contact Section
-- Contact form with validation
+- Contact form with validation (required fields, email format)
+- Success and error feedback
 - Contact information (phone, email, address)
-- Emergency resources
-- Professional contact details
+- Google Maps link
+
+### Counter Section
+- Animated counters for years of experience and total client sessions
+- Triggers when section comes into view
 
 ## 🛠️ Technologies Used
 
@@ -80,32 +82,30 @@ The website is fully responsive and optimized for:
 
 ## 🎨 Design Features
 
-- **Color Scheme**: Professional indigo and purple palette
+- **Color Scheme**: Professional teal and green palette
 - **Typography**: Inter font for clean, readable text
-- **Animations**: Subtle hover effects and transitions
+- **Animations**: Subtle hover effects, animated counters
 - **Accessibility**: High contrast ratios and keyboard navigation
 - **Performance**: Optimized images and fast loading times
 
 ## 📋 Content Sections
 
 ### Dr. Blake's Information
-- **Name**: Dr. Serena Blake
-- **Title**: Licensed Clinical Psychologist
-- **Education**: Ph.D. in Clinical Psychology, Stanford University
-- **Experience**: 10+ years, 500+ clients helped
-- **Location**: San Francisco, CA
-- **Contact**: (555) 123-4567, dr.blake@therapy.com
+- **Name**: Dr. Serena Blake, PsyD
+- **Title**: Clinical Psychologist
+- **Experience**: 8+ years, 500+ client sessions
+- **Location**: 1287 Maplewood Drive, Los Angeles, CA 90026
+- **Contact**: (323) 555-0192, serena@blakepsychology.com
 
 ### Services Offered
-- Individual Therapy ($200/session)
-- Couples Therapy ($250/session)
-- Free Consultation
+- Christian Individual Counseling
+- Christian Couples Counseling
 - Virtual and in-person sessions
 - Specializations: Anxiety, Depression, Trauma, Relationships
 
 ### Office Hours
-- **In-Person**: Mon-Fri 9AM-6PM, Sat 10AM-2PM
-- **Virtual**: Mon-Fri 8AM-7PM, Sat 9AM-3PM
+- **In-Person**: Tue & Thu, 10AM–6PM
+- **Virtual (Zoom)**: Mon, Wed & Fri, 1PM–5PM
 
 ## 🚀 Deployment
 
@@ -115,14 +115,14 @@ The website is fully responsive and optimized for:
 3. Deploy automatically on every push
 
 ### Live Demo
-Visit the live website: [https://dr-serena-blake-therapy.vercel.app](https://dr-serena-blake-therapy.vercel.app)
+(Replace with your live site URL if available)
 
 ## 📝 Customization
 
 ### Updating Content
 - Edit `src/app/page.tsx` to modify text content
 - Update contact information in the Contact section
-- Modify services and pricing as needed
+- Modify services and office hours as needed
 
 ### Styling
 - Customize colors in `src/app/globals.css`
@@ -149,7 +149,12 @@ src/
 ├── app/
 │   ├── globals.css      # Global styles
 │   ├── layout.tsx       # Root layout
-│   └── page.tsx         # Main page component
+│   ├── page.tsx         # Main page component
+│   ├── AboutSection.tsx # About section
+│   ├── ServicesSection.tsx # Services section
+│   ├── FAQSection.tsx   # FAQ section
+│   ├── ContactSection.tsx # Contact section
+│   └── CounterSection.tsx # Animated counter section
 ├── components/          # Reusable components (if added)
 └── lib/                 # Utility functions (if added)
 ```
@@ -157,8 +162,9 @@ src/
 ## 📞 Contact
 
 For questions about this website or to request modifications:
-- Email: [your-email@example.com]
-- GitHub: [your-github-username]
+- Email: [nishantvidhuri0987@gmail.com]
+- GitHub: [https://github.com/Nishantvidhuri]
+- Phone No.: [+91 9871202673]
 
 ## 📄 License
 
