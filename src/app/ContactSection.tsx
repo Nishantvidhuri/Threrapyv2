@@ -35,9 +35,9 @@ export default function ContactSection() {
         'service_v5ma1dr',
         'template_n8csemo',
         {
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
+          to_name: 'Dr. Serena Blake',
+          from_name: data.name,
+          from_email: data.email,
           message: data.message,
         },
         'zcL4jj0QhEChPRS1V'
